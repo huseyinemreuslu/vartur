@@ -1,6 +1,6 @@
 import fastify, { FastifyInstance } from "fastify";
 import productRoutes from "./src/modules/product/product.route";
-
+import cors from "@fastify/cors";
 import { productSchemas } from "./src/modules/product/product.scheme";
 import fastifyMultipart from "@fastify/multipart";
 
@@ -14,6 +14,10 @@ server.register(fastifyMultipart, {
 server.register(productRoutes, { prefix: "/api/products" });
 
 async function main() {
+  await server.register(cors, {
+    // This is NOT recommended for production as it enables reflection exploits
+    origin: true,
+  });
   for (const schema of productSchemas) {
     server.addSchema(schema);
   }

@@ -10,7 +10,13 @@
           ></v-list-item>
         </v-list>
       </v-navigation-drawer>
-      <v-main style="height: 800px"></v-main>
+      <v-main style="height: 800px">
+        <ProductTable></ProductTable>
+      </v-main>
     </v-layout>
   </v-card>
 </template>
+
+<script setup>
+import ProductTable from "@/components/product/ProductTable.vue";
+</script>

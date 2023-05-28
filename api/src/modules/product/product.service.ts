@@ -8,6 +8,19 @@ export async function createProduct(productInput: CreateProductSchema) {
   return product;
 }
 
+export async function updateProduct(
+  productInput: CreateProductSchema,
+  id: number
+) {
+  const product = await prisma.products.update({
+    where: {
+      id: id,
+    },
+    data: productInput,
+  });
+  return product;
+}
+
 export async function removeProduct(id: number) {
   return prisma.products.delete({
     where: {
@@ -30,8 +43,25 @@ export async function getProduct(id: number) {
   });
 }
 
-export async function getProducts() {
+export async function getProductLength(name: string) {
+  return prisma.products.count({
+    where: {
+      name: {
+        contains: name,
+      },
+    },
+  });
+}
+
+export async function getProducts(name: string, skip: number, take: number) {
   return prisma.products.findMany({
+    skip: skip,
+    take: take,
+    where: {
+      name: {
+        contains: name,
+      },
+    },
     select: {
       id: true,
       name: true,

@@ -31,7 +31,10 @@ const deleteProductSchema = z.object({
   id: z.number(),
 });
 
-const productsResponseSchema = z.array(productResponseSchema);
+const productsResponseSchema = z.object({
+  count: z.string(),
+  data: z.array(productResponseSchema),
+});
 
 export type CreateProductSchema = z.infer<typeof createProductSchema>;
 export type DeleteProductSchema = z.infer<typeof deleteProductSchema>;

@@ -21,6 +21,21 @@ async function productRoutes(server: FastifyInstance) {
     },
     createProductHandler
   );
+  server.put(
+    "/:id",
+    {
+      schema: {
+        body: $ref("createProductSchema"),
+        params: {
+          id: { type: "number" },
+        },
+        response: {
+          201: $ref("productResponseSchema"),
+        },
+      },
+    },
+    createProductHandler
+  );
   server.post(
     "/upload/:id",
     { preHandler: upload.single("picture") },
@@ -62,7 +77,9 @@ async function productRoutes(server: FastifyInstance) {
     {
       schema: {
         querystring: {
-          id: { type: "number" },
+          name: { type: "string" },
+          skip: { type: "number" },
+          take: { type: "number" },
         },
         response: {
           200: $ref("productsResponseSchema"),

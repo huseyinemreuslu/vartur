@@ -3,11 +3,12 @@ import fs from "fs";
 import {
   createProduct,
   getProduct,
+  getProductLength,
   getProducts,
   removeProduct,
+  updateProduct,
 } from "./product.service";
 import { CreateProductSchema, DeleteProductSchema } from "./product.scheme";
-import { log } from "console";
 
 export async function createProductHandler(
   request: FastifyRequest<{
@@ -27,9 +28,38 @@ export async function createProductHandler(
   }
 }
 
-export async function getProductsHandler() {
-  const products = await getProducts();
-  return products;
+export async function updateProductHandler(
+  request: FastifyRequest<{
+    consumes: ["multipart/form-data"];
+    Body: CreateProductSchema;
+    Params: DeleteProductSchema;
+  }>,
+  reply: FastifyReply
+) {
+  const body = request.body;
+  const query = request.params;
+  try {
+    const product = await updateProduct(body, query.id);
+    return reply.code(500).send(product);
+  } catch (error) {
+    console.log(error);
+    return reply.code(500).send(error);
+  }
+}
+
+export async function getProductsHandler(
+  request: FastifyRequest<{
+    Querystring: {
+      name: string;
+      take: number;
+      skip: number;
+    };
+  }>
+) {
+  const { name, skip, take } = request.query;
+  const productLength = await getProductLength(name);
+  const products = await getProducts(name, skip, take);
+  return { count: productLength, data: products };
 }
 
 export async function getProductHandler(
