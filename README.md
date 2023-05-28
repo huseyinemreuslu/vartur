@@ -1,6 +1,8 @@
 1- You should use yarn or npm for this project
 2- Suggested yarn. If you do not have yarn, you can install it with this command: "npm i -g yarn"
 
+ONLY DEV MODE IS ENABLED FOR THIS PROJECT.
+
 # USING API
 
 Follow those steps:
