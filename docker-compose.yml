@@ -1,0 +1,40 @@
+version: '1.0.0'
+services:
+  # web:
+  #   build: .
+  #   command: sh -c "yarn install && yarn run dev"
+  #   volumes:
+  #     - .:/usr/app/
+  #     - /usr/app/node_modules
+  #   ports:
+  #     - "3000:3000"
+  #   environment:
+  #     DATABASE_URL: mysql://root:vetur123@localhost:3306/vetur
+  #     MYSQL_HOST: mysql
+  #     MYSQL_USER: root
+  #     MYSQL_PASSWORD: vetur123
+  #     MYSQL_DB: vetur
+  # web:
+  #   build:
+  #     context: ./api/
+  #     target: ./api/
+  #   volumes:
+  #     - .:/api
+  #   command: npm install;npm run start:dev
+  #   ports:
+  #     - "3000:3000"
+  #   environment:
+  #     NODE_ENV: development
+  mysql:
+    image: mysql:5.7
+    environment:
+      MYSQL_DATABASE: 'vetur'
+      # So you don't have to use root, but you can if you like
+      MYSQL_USER: 'vetur'
+      # You can use whatever password you like
+      MYSQL_PASSWORD: 'vetur123'
+      # Password for root access
+      MYSQL_ROOT_PASSWORD: 'vetur123'
+
+volumes:
+  my-db:
