@@ -20,13 +20,3 @@ Follow those steps:
 # DEVELOPER NOTES
 
 POSTMAN Collection: "Api.Vartur.Collection.Postman.json"
-
-Proje crud olduğu için, SqlLite kullandım. Güncel olarak MySQL ve MsSQL kullanmaktayım.
-Docker kurabilirdim, ancak ne yazık ki işlerimdeki yoğunluk nedeniyle çok fazla vakit ayıramadım.
-Prisma kullanmayı tercih ettim, typescript desteği nedeniyle.
-
-Güncel iş hayatımda şu an Node.js için Sequelize, Express gibi frameworkler kullanmaktayım.
-Front end tarafında ise güncel olarak Vue.Js ile çalışıyorum, ancak 1 yıllık kadar react bulunmaktadır.
-Mobil tarafta ise Flutter gibi UI Kit bilgim var bununla birlikte güncel iş yerimde Android Native yazmaktayım.
-
-İlginiz ve anlayışınız için teşekkürler.
