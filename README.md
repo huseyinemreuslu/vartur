@@ -19,4 +19,4 @@ Follow those steps:
 
 # DEVELOPER NOTES
 
-POSTMAN Collection: "Api.Vartur.Collection.Postman.json"
+POSTMAN Collection: "Api.Collection.Postman.json"
